@@ -1,4 +1,4 @@
-package com.instarecipe
+package com.anonymous.instarecipe
 
 import android.app.Application
 import android.content.res.Configuration

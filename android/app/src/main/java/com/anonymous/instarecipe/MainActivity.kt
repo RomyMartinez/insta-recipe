@@ -1,4 +1,4 @@
-package com.instarecipe
+package com.anonymous.instarecipe
 
 import android.os.Build
 import android.os.Bundle
