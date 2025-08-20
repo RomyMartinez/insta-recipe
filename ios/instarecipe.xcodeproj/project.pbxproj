@@ -257,12 +257,14 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = org.name.instarecipe;
-				PRODUCT_NAME = instarecipe;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.anonymous.instarecipe";
+				PRODUCT_NAME = "instarecipe";
 				SWIFT_OBJC_BRIDGING_HEADER = "instarecipe/instarecipe-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
+				TARGETED_DEVICE_FAMILY = "1";
+				CODE_SIGN_ENTITLEMENTS = instarecipe/instarecipe.entitlements;
 			};
 			name = Debug;
 		};
@@ -284,11 +286,13 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = org.name.instarecipe;
-				PRODUCT_NAME = instarecipe;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.anonymous.instarecipe";
+				PRODUCT_NAME = "instarecipe";
 				SWIFT_OBJC_BRIDGING_HEADER = "instarecipe/instarecipe-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
+				TARGETED_DEVICE_FAMILY = "1";
+				CODE_SIGN_ENTITLEMENTS = instarecipe/instarecipe.entitlements;
 			};
 			name = Release;
 		};
