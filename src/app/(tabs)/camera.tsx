@@ -7,25 +7,18 @@ import {
   TouchableOpacity,
   StatusBar,
 } from "react-native";
-import { Camera, CameraType } from "expo-camera";
+import { CameraView, useCameraPermissions } from "expo-camera";
 import { Ionicons } from "@expo/vector-icons";
-import { Button } from "../../../components";
-import { colors, spacing, typography } from "../../../theme";
+import { Button } from "../../components";
+import { colors, spacing, typography } from "../../theme";
 
 export default function CameraScreen() {
-  const [hasPermission, setHasPermission] = useState<boolean | null>(null);
-  const [type, setType] = useState(CameraType.back);
+  const [permission, requestPermission] = useCameraPermissions();
+  const [facing, setFacing] = useState<"front" | "back">("back");
   const [isCapturing, setIsCapturing] = useState(false);
-  const cameraRef = useRef<Camera>(null);
+  const cameraRef = useRef<CameraView>(null);
 
-  React.useEffect(() => {
-    const getCameraPermissions = async () => {
-      const { status } = await Camera.requestCameraPermissionsAsync();
-      setHasPermission(status === "granted");
-    };
-
-    getCameraPermissions();
-  }, []);
+  // Permission is handled by useCameraPermissions hook
 
   const handleCapture = async () => {
     if (cameraRef.current) {
@@ -52,12 +45,10 @@ export default function CameraScreen() {
   };
 
   const toggleCameraType = () => {
-    setType((current) =>
-      current === CameraType.back ? CameraType.front : CameraType.back
-    );
+    setFacing((current) => (current === "back" ? "front" : "back"));
   };
 
-  if (hasPermission === null) {
+  if (!permission) {
     return (
       <View style={styles.container}>
         <StatusBar barStyle="light-content" backgroundColor={colors.black} />
@@ -66,14 +57,14 @@ export default function CameraScreen() {
     );
   }
 
-  if (hasPermission === false) {
+  if (!permission.granted) {
     return (
       <View style={styles.container}>
         <StatusBar barStyle="light-content" backgroundColor={colors.black} />
         <Text style={styles.message}>No access to camera</Text>
         <Button
           title="Grant Permission"
-          onPress={() => Camera.requestCameraPermissionsAsync()}
+          onPress={requestPermission}
           style={styles.permissionButton}
         />
       </View>
@@ -83,7 +74,7 @@ export default function CameraScreen() {
   return (
     <View style={styles.container}>
       <StatusBar barStyle="light-content" backgroundColor={colors.black} />
-      <Camera style={styles.camera} type={type} ref={cameraRef}>
+      <CameraView style={styles.camera} facing={facing} ref={cameraRef}>
         <View style={styles.overlay}>
           <View style={styles.topControls}>
             <TouchableOpacity
@@ -113,7 +104,7 @@ export default function CameraScreen() {
             </TouchableOpacity>
           </View>
         </View>
-      </Camera>
+      </CameraView>
     </View>
   );
 }

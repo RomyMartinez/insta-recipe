@@ -7,8 +7,8 @@ import {
   RefreshControl,
   StatusBar,
 } from "react-native";
-import { Card } from "../../../components";
-import { colors, spacing, typography } from "../../../theme";
+import { Card } from "../../components";
+import { colors, spacing, typography } from "../../theme";
 
 interface Recipe {
   id: string;
