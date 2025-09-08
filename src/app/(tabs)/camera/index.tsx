@@ -1,9 +1,16 @@
-import React, { useState, useRef } from 'react';
-import { View, Text, StyleSheet, Alert, TouchableOpacity, StatusBar } from 'react-native';
-import { Camera, CameraType } from 'expo-camera';
-import { Ionicons } from '@expo/vector-icons';
-import { Button } from '../../../components';
-import { colors, spacing, typography } from '../../../theme';
+import React, { useState, useRef } from "react";
+import {
+  View,
+  Text,
+  StyleSheet,
+  Alert,
+  TouchableOpacity,
+  StatusBar,
+} from "react-native";
+import { Camera, CameraType } from "expo-camera";
+import { Ionicons } from "@expo/vector-icons";
+import { Button } from "../../../components";
+import { colors, spacing, typography } from "../../../theme";
 
 export default function CameraScreen() {
   const [hasPermission, setHasPermission] = useState<boolean | null>(null);
@@ -14,7 +21,7 @@ export default function CameraScreen() {
   React.useEffect(() => {
     const getCameraPermissions = async () => {
       const { status } = await Camera.requestCameraPermissionsAsync();
-      setHasPermission(status === 'granted');
+      setHasPermission(status === "granted");
     };
 
     getCameraPermissions();
@@ -28,10 +35,10 @@ export default function CameraScreen() {
           quality: 0.8,
           base64: true,
         });
-        
+
         // TODO: Send photo to OpenAI API for recipe generation
-        Alert.alert('Success', 'Photo captured! Generating recipe...');
-        
+        Alert.alert("Success", "Photo captured! Generating recipe...");
+
         // Simulate API call
         setTimeout(() => {
           setIsCapturing(false);
@@ -39,13 +46,15 @@ export default function CameraScreen() {
         }, 2000);
       } catch (error) {
         setIsCapturing(false);
-        Alert.alert('Error', 'Failed to capture photo');
+        Alert.alert("Error", "Failed to capture photo");
       }
     }
   };
 
   const toggleCameraType = () => {
-    setType(current => (current === CameraType.back ? CameraType.front : CameraType.back));
+    setType((current) =>
+      current === CameraType.back ? CameraType.front : CameraType.back
+    );
   };
 
   if (hasPermission === null) {
@@ -74,14 +83,13 @@ export default function CameraScreen() {
   return (
     <View style={styles.container}>
       <StatusBar barStyle="light-content" backgroundColor={colors.black} />
-      <Camera
-        style={styles.camera}
-        type={type}
-        ref={cameraRef}
-      >
+      <Camera style={styles.camera} type={type} ref={cameraRef}>
         <View style={styles.overlay}>
           <View style={styles.topControls}>
-            <TouchableOpacity style={styles.flipButton} onPress={toggleCameraType}>
+            <TouchableOpacity
+              style={styles.flipButton}
+              onPress={toggleCameraType}
+            >
               <Ionicons name="camera-reverse" size={24} color={colors.white} />
             </TouchableOpacity>
           </View>
@@ -92,17 +100,16 @@ export default function CameraScreen() {
                 Point your camera at food to generate a recipe
               </Text>
             </View>
-            
+
             <TouchableOpacity
-              style={[styles.captureButton, isCapturing && styles.captureButtonDisabled]}
+              style={[
+                styles.captureButton,
+                isCapturing && styles.captureButtonDisabled,
+              ]}
               onPress={handleCapture}
               disabled={isCapturing}
             >
-              <Ionicons
-                name="camera"
-                size={32}
-                color={colors.white}
-              />
+              <Ionicons name="camera" size={32} color={colors.white} />
             </TouchableOpacity>
           </View>
         </View>
@@ -115,45 +122,45 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: colors.black,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
   },
   camera: {
     flex: 1,
-    width: '100%',
+    width: "100%",
   },
   overlay: {
     flex: 1,
-    backgroundColor: 'transparent',
-    justifyContent: 'space-between',
+    backgroundColor: "transparent",
+    justifyContent: "space-between",
   },
   topControls: {
-    flexDirection: 'row',
-    justifyContent: 'flex-end',
+    flexDirection: "row",
+    justifyContent: "flex-end",
     paddingTop: spacing.xl,
     paddingHorizontal: spacing.lg,
   },
   flipButton: {
-    backgroundColor: 'rgba(0,0,0,0.5)',
+    backgroundColor: "rgba(0,0,0,0.5)",
     borderRadius: 25,
     padding: spacing.sm,
   },
   bottomControls: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-    paddingBottom: spacing['3xl'],
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    paddingBottom: spacing["3xl"],
     paddingHorizontal: spacing.lg,
   },
   instructions: {
     flex: 1,
-    alignItems: 'center',
+    alignItems: "center",
   },
   instructionText: {
     color: colors.white,
     fontSize: typography.fontSize.base,
-    textAlign: 'center',
-    backgroundColor: 'rgba(0,0,0,0.5)',
+    textAlign: "center",
+    backgroundColor: "rgba(0,0,0,0.5)",
     paddingHorizontal: spacing.md,
     paddingVertical: spacing.sm,
     borderRadius: 20,
@@ -170,7 +177,7 @@ const styles = StyleSheet.create({
   message: {
     fontSize: typography.fontSize.lg,
     color: colors.textPrimary,
-    textAlign: 'center',
+    textAlign: "center",
     marginBottom: spacing.lg,
   },
   permissionButton: {

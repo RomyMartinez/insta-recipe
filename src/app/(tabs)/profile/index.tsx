@@ -1,13 +1,20 @@
-import React, { useState } from 'react';
-import { View, Text, StyleSheet, Alert, ScrollView, StatusBar } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
-import { Button, Input } from '../../../components';
-import { colors, spacing, typography } from '../../../theme';
+import React, { useState } from "react";
+import {
+  View,
+  Text,
+  StyleSheet,
+  Alert,
+  ScrollView,
+  StatusBar,
+} from "react-native";
+import { Ionicons } from "@expo/vector-icons";
+import { Button, Input } from "../../../components";
+import { colors, spacing, typography } from "../../../theme";
 
 export default function ProfileScreen() {
   const [user, setUser] = useState({
-    name: 'John Doe',
-    email: 'john.doe@example.com',
+    name: "John Doe",
+    email: "john.doe@example.com",
     recipesCreated: 12,
     recipesSaved: 28,
   });
@@ -15,27 +22,23 @@ export default function ProfileScreen() {
   const [editedName, setEditedName] = useState(user.name);
 
   const handleLogout = () => {
-    Alert.alert(
-      'Logout',
-      'Are you sure you want to logout?',
-      [
-        { text: 'Cancel', style: 'cancel' },
-        { 
-          text: 'Logout', 
-          style: 'destructive',
-          onPress: () => {
-            // TODO: Implement logout logic
-            console.log('User logged out');
-          }
+    Alert.alert("Logout", "Are you sure you want to logout?", [
+      { text: "Cancel", style: "cancel" },
+      {
+        text: "Logout",
+        style: "destructive",
+        onPress: () => {
+          // TODO: Implement logout logic
+          console.log("User logged out");
         },
-      ]
-    );
+      },
+    ]);
   };
 
   const handleSaveProfile = () => {
-    setUser(prev => ({ ...prev, name: editedName }));
+    setUser((prev) => ({ ...prev, name: editedName }));
     setIsEditing(false);
-    Alert.alert('Success', 'Profile updated successfully');
+    Alert.alert("Success", "Profile updated successfully");
   };
 
   const handleEditProfile = () => {
@@ -71,7 +74,7 @@ export default function ProfileScreen() {
 
       <View style={styles.section}>
         <Text style={styles.sectionTitle}>Profile Settings</Text>
-        
+
         {isEditing ? (
           <View style={styles.editForm}>
             <Input
@@ -106,21 +109,25 @@ export default function ProfileScreen() {
 
       <View style={styles.section}>
         <Text style={styles.sectionTitle}>Account</Text>
-        
+
         <Button
           title="Change Password"
-          onPress={() => Alert.alert('Coming Soon', 'Password change feature coming soon')}
+          onPress={() =>
+            Alert.alert("Coming Soon", "Password change feature coming soon")
+          }
           variant="ghost"
           style={styles.accountButton}
         />
-        
+
         <Button
           title="Privacy Settings"
-          onPress={() => Alert.alert('Coming Soon', 'Privacy settings coming soon')}
+          onPress={() =>
+            Alert.alert("Coming Soon", "Privacy settings coming soon")
+          }
           variant="ghost"
           style={styles.accountButton}
         />
-        
+
         <Button
           title="Logout"
           onPress={handleLogout}
@@ -138,8 +145,8 @@ const styles = StyleSheet.create({
     backgroundColor: colors.background,
   },
   header: {
-    alignItems: 'center',
-    paddingTop: spacing['4xl'],
+    alignItems: "center",
+    paddingTop: spacing["4xl"],
     paddingBottom: spacing.xl,
     paddingHorizontal: spacing.lg,
     backgroundColor: colors.white,
@@ -151,12 +158,12 @@ const styles = StyleSheet.create({
     height: 80,
     borderRadius: 40,
     backgroundColor: colors.primary,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
     marginBottom: spacing.md,
   },
   name: {
-    fontSize: typography.fontSize['2xl'],
+    fontSize: typography.fontSize["2xl"],
     fontWeight: typography.fontWeight.bold,
     color: colors.textPrimary,
     marginBottom: spacing.xs,
@@ -166,8 +173,8 @@ const styles = StyleSheet.create({
     color: colors.textSecondary,
   },
   stats: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
+    flexDirection: "row",
+    justifyContent: "space-around",
     paddingVertical: spacing.xl,
     marginHorizontal: spacing.lg,
     backgroundColor: colors.white,
@@ -175,10 +182,10 @@ const styles = StyleSheet.create({
     marginBottom: spacing.lg,
   },
   statItem: {
-    alignItems: 'center',
+    alignItems: "center",
   },
   statNumber: {
-    fontSize: typography.fontSize['3xl'],
+    fontSize: typography.fontSize["3xl"],
     fontWeight: typography.fontWeight.bold,
     color: colors.primary,
   },
@@ -203,7 +210,7 @@ const styles = StyleSheet.create({
     borderRadius: 12,
   },
   editButtons: {
-    flexDirection: 'row',
+    flexDirection: "row",
     marginTop: spacing.md,
   },
   saveButton: {
