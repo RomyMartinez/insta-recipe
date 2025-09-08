@@ -12,5 +12,6 @@ export const styles = StyleSheet.create({
     marginTop: 16,
     fontSize: 16,
     color: colors.textSecondary,
+    fontFamily: 'Poppins-Regular',
   },
 });

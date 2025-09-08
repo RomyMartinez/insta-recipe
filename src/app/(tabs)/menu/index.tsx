@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, FlatList, RefreshControl } from 'react-native';
+import { View, Text, StyleSheet, FlatList, RefreshControl, StatusBar } from 'react-native';
 import { Card } from '../../../components';
 import { colors, spacing, typography } from '../../../theme';
 
@@ -67,6 +67,7 @@ export default function MenuScreen() {
 
   return (
     <View style={styles.container}>
+      <StatusBar barStyle="dark-content" backgroundColor={colors.background} />
       <View style={styles.header}>
         <Text style={styles.title}>Discover Recipes</Text>
         <Text style={styles.subtitle}>Find your next favorite dish</Text>
@@ -93,8 +94,11 @@ const styles = StyleSheet.create({
   },
   header: {
     paddingHorizontal: spacing.lg,
-    paddingTop: spacing.xl,
+    paddingTop: spacing['3xl'],
     paddingBottom: spacing.md,
+    backgroundColor: colors.white,
+    borderBottomWidth: 1,
+    borderBottomColor: colors.border,
   },
   title: {
     fontSize: typography.fontSize['3xl'],
@@ -108,6 +112,7 @@ const styles = StyleSheet.create({
   },
   list: {
     paddingHorizontal: spacing.lg,
-    paddingBottom: spacing.xl,
+    paddingTop: spacing.md,
+    paddingBottom: spacing['3xl'],
   },
 });

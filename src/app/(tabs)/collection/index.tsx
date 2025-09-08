@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, FlatList } from 'react-native';
+import { View, Text, StyleSheet, FlatList, StatusBar } from 'react-native';
 import { Card } from '../../../components';
 import { colors, spacing, typography } from '../../../theme';
 
@@ -53,6 +53,7 @@ export default function CollectionScreen() {
 
   return (
     <View style={styles.container}>
+      <StatusBar barStyle="dark-content" backgroundColor={colors.background} />
       <View style={styles.header}>
         <Text style={styles.title}>My Collection</Text>
         <Text style={styles.subtitle}>Your saved recipes and favorites</Text>
@@ -85,8 +86,11 @@ const styles = StyleSheet.create({
   },
   header: {
     paddingHorizontal: spacing.lg,
-    paddingTop: spacing.xl,
+    paddingTop: spacing['3xl'],
     paddingBottom: spacing.md,
+    backgroundColor: colors.white,
+    borderBottomWidth: 1,
+    borderBottomColor: colors.border,
   },
   title: {
     fontSize: typography.fontSize['3xl'],
@@ -100,13 +104,15 @@ const styles = StyleSheet.create({
   },
   list: {
     paddingHorizontal: spacing.lg,
-    paddingBottom: spacing.xl,
+    paddingTop: spacing.md,
+    paddingBottom: spacing['3xl'],
   },
   emptyState: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
     paddingHorizontal: spacing.lg,
+    paddingTop: spacing['3xl'],
   },
   emptyTitle: {
     fontSize: typography.fontSize.xl,

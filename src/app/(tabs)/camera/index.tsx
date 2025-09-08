@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { View, Text, StyleSheet, Alert, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, Alert, TouchableOpacity, StatusBar } from 'react-native';
 import { Camera, CameraType } from 'expo-camera';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { Button } from '../../../components';
@@ -51,6 +51,7 @@ export default function CameraScreen() {
   if (hasPermission === null) {
     return (
       <View style={styles.container}>
+        <StatusBar barStyle="light-content" backgroundColor={colors.black} />
         <Text style={styles.message}>Requesting camera permission...</Text>
       </View>
     );
@@ -59,6 +60,7 @@ export default function CameraScreen() {
   if (hasPermission === false) {
     return (
       <View style={styles.container}>
+        <StatusBar barStyle="light-content" backgroundColor={colors.black} />
         <Text style={styles.message}>No access to camera</Text>
         <Button
           title="Grant Permission"
@@ -71,6 +73,7 @@ export default function CameraScreen() {
 
   return (
     <View style={styles.container}>
+      <StatusBar barStyle="light-content" backgroundColor={colors.black} />
       <Camera
         style={styles.camera}
         type={type}

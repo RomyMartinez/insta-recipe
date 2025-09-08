@@ -4,15 +4,18 @@ import { colors, spacing, borderRadius, shadows } from '../../theme';
 export const styles = StyleSheet.create({
   container: {
     backgroundColor: colors.white,
-    borderRadius: borderRadius.lg,
-    padding: spacing.md,
+    borderRadius: borderRadius.xl,
+    padding: spacing.lg,
     marginVertical: spacing.sm,
+    marginHorizontal: spacing.xs,
     ...shadows.md,
+    borderWidth: 1,
+    borderColor: colors.borderLight,
   },
   image: {
     width: '100%',
-    height: 200,
-    borderRadius: borderRadius.md,
+    height: 180,
+    borderRadius: borderRadius.lg,
     backgroundColor: colors.gray100,
   },
   content: {
@@ -23,11 +26,13 @@ export const styles = StyleSheet.create({
     fontWeight: '600',
     color: colors.textPrimary,
     marginBottom: spacing.xs,
+    fontFamily: 'Poppins-SemiBold',
   },
   description: {
     fontSize: 14,
     color: colors.textSecondary,
     lineHeight: 20,
+    fontFamily: 'Poppins-Regular',
   },
   footer: {
     flexDirection: 'row',
@@ -38,6 +43,7 @@ export const styles = StyleSheet.create({
   time: {
     fontSize: 12,
     color: colors.textTertiary,
+    fontFamily: 'Poppins-Regular',
   },
   rating: {
     flexDirection: 'row',

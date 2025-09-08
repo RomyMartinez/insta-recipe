@@ -10,6 +10,7 @@ export const styles = StyleSheet.create({
     fontWeight: '500',
     color: colors.textPrimary,
     marginBottom: spacing.xs,
+    fontFamily: 'Poppins-Medium',
   },
   inputContainer: {
     borderWidth: 1,
@@ -30,6 +31,7 @@ export const styles = StyleSheet.create({
     fontSize: 16,
     color: colors.textPrimary,
     padding: 0,
+    fontFamily: 'Poppins-Regular',
   },
   errorText: {
     fontSize: 12,

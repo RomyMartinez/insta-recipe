@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, Alert } from 'react-native';
+import { View, Text, StyleSheet, Alert, StatusBar } from 'react-native';
 import { router } from 'expo-router';
 import { Button, Input } from '../../components';
 import { colors, spacing, typography } from '../../theme';
@@ -29,6 +29,7 @@ export default function LoginScreen() {
 
   return (
     <View style={styles.container}>
+      <StatusBar barStyle="dark-content" backgroundColor={colors.background} />
       <View style={styles.header}>
         <Text style={styles.title}>Welcome Back!</Text>
         <Text style={styles.subtitle}>Sign in to continue</Text>

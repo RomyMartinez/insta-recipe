@@ -1,6 +1,6 @@
 import { Tabs } from 'expo-router';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import { colors } from '../../theme';
+import { colors, spacing } from '../../theme';
 
 export default function TabsLayout() {
   return (
@@ -12,7 +12,10 @@ export default function TabsLayout() {
         tabBarStyle: {
           backgroundColor: colors.white,
           borderTopColor: colors.border,
-          height: 60,
+          borderTopWidth: 1,
+          height: 70,
+          paddingBottom: spacing.md,
+          paddingTop: spacing.sm,
         },
         headerShown: false,
       }}
@@ -20,32 +23,36 @@ export default function TabsLayout() {
       <Tabs.Screen
         name="menu"
         options={{
+          title: 'Menu',
           tabBarIcon: ({ color, size }) => (
-            <MaterialCommunityIcons name="food" color={color} size={size} />
+            <MaterialCommunityIcons name="food" color={color} size={28} />
           ),
         }}
       />
       <Tabs.Screen
         name="collection"
         options={{
+          title: 'Collection',
           tabBarIcon: ({ color, size }) => (
-            <MaterialCommunityIcons name="bookmark" color={color} size={size} />
+            <MaterialCommunityIcons name="bookmark" color={color} size={28} />
           ),
         }}
       />
       <Tabs.Screen
         name="camera"
         options={{
+          title: 'Camera',
           tabBarIcon: ({ color, size }) => (
-            <MaterialCommunityIcons name="camera" color={color} size={size} />
+            <MaterialCommunityIcons name="camera" color={color} size={28} />
           ),
         }}
       />
       <Tabs.Screen
         name="profile"
         options={{
+          title: 'Profile',
           tabBarIcon: ({ color, size }) => (
-            <MaterialCommunityIcons name="account" color={color} size={size} />
+            <MaterialCommunityIcons name="account" color={color} size={28} />
           ),
         }}
       />

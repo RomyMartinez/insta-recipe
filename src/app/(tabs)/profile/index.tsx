@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, Alert, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, Alert, ScrollView, StatusBar } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { Button, Input } from '../../../components';
 import { colors, spacing, typography } from '../../../theme';
@@ -49,6 +49,7 @@ export default function ProfileScreen() {
 
   return (
     <ScrollView style={styles.container}>
+      <StatusBar barStyle="dark-content" backgroundColor={colors.background} />
       <View style={styles.header}>
         <View style={styles.avatar}>
           <MaterialCommunityIcons name="account" size={40} color={colors.white} />
@@ -138,9 +139,12 @@ const styles = StyleSheet.create({
   },
   header: {
     alignItems: 'center',
-    paddingTop: spacing['3xl'],
+    paddingTop: spacing['4xl'],
     paddingBottom: spacing.xl,
     paddingHorizontal: spacing.lg,
+    backgroundColor: colors.white,
+    borderBottomWidth: 1,
+    borderBottomColor: colors.border,
   },
   avatar: {
     width: 80,
