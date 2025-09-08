@@ -6,7 +6,7 @@ import {
   Poppins_600SemiBold,
   Poppins_700Bold,
 } from "@expo-google-fonts/poppins";
-import { Loading } from "../components";
+import { Loading } from "@/components";
 
 export default function RootLayout() {
   const [fontsLoaded] = useFonts({
