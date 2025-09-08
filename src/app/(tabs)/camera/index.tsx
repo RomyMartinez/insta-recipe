@@ -1,0 +1,176 @@
+import React, { useState, useRef } from 'react';
+import { View, Text, StyleSheet, Alert, TouchableOpacity } from 'react-native';
+import { Camera, CameraType } from 'expo-camera';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { Button } from '../../../components';
+import { colors, spacing, typography } from '../../../theme';
+
+export default function CameraScreen() {
+  const [hasPermission, setHasPermission] = useState<boolean | null>(null);
+  const [type, setType] = useState(CameraType.back);
+  const [isCapturing, setIsCapturing] = useState(false);
+  const cameraRef = useRef<Camera>(null);
+
+  React.useEffect(() => {
+    const getCameraPermissions = async () => {
+      const { status } = await Camera.requestCameraPermissionsAsync();
+      setHasPermission(status === 'granted');
+    };
+
+    getCameraPermissions();
+  }, []);
+
+  const handleCapture = async () => {
+    if (cameraRef.current) {
+      setIsCapturing(true);
+      try {
+        const photo = await cameraRef.current.takePictureAsync({
+          quality: 0.8,
+          base64: true,
+        });
+        
+        // TODO: Send photo to OpenAI API for recipe generation
+        Alert.alert('Success', 'Photo captured! Generating recipe...');
+        
+        // Simulate API call
+        setTimeout(() => {
+          setIsCapturing(false);
+          // TODO: Navigate to recipe creation screen with generated recipe
+        }, 2000);
+      } catch (error) {
+        setIsCapturing(false);
+        Alert.alert('Error', 'Failed to capture photo');
+      }
+    }
+  };
+
+  const toggleCameraType = () => {
+    setType(current => (current === CameraType.back ? CameraType.front : CameraType.back));
+  };
+
+  if (hasPermission === null) {
+    return (
+      <View style={styles.container}>
+        <Text style={styles.message}>Requesting camera permission...</Text>
+      </View>
+    );
+  }
+
+  if (hasPermission === false) {
+    return (
+      <View style={styles.container}>
+        <Text style={styles.message}>No access to camera</Text>
+        <Button
+          title="Grant Permission"
+          onPress={() => Camera.requestCameraPermissionsAsync()}
+          style={styles.permissionButton}
+        />
+      </View>
+    );
+  }
+
+  return (
+    <View style={styles.container}>
+      <Camera
+        style={styles.camera}
+        type={type}
+        ref={cameraRef}
+      >
+        <View style={styles.overlay}>
+          <View style={styles.topControls}>
+            <TouchableOpacity style={styles.flipButton} onPress={toggleCameraType}>
+              <MaterialCommunityIcons name="camera-flip" size={24} color={colors.white} />
+            </TouchableOpacity>
+          </View>
+
+          <View style={styles.bottomControls}>
+            <View style={styles.instructions}>
+              <Text style={styles.instructionText}>
+                Point your camera at food to generate a recipe
+              </Text>
+            </View>
+            
+            <TouchableOpacity
+              style={[styles.captureButton, isCapturing && styles.captureButtonDisabled]}
+              onPress={handleCapture}
+              disabled={isCapturing}
+            >
+              <MaterialCommunityIcons
+                name="camera"
+                size={32}
+                color={colors.white}
+              />
+            </TouchableOpacity>
+          </View>
+        </View>
+      </Camera>
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: colors.black,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  camera: {
+    flex: 1,
+    width: '100%',
+  },
+  overlay: {
+    flex: 1,
+    backgroundColor: 'transparent',
+    justifyContent: 'space-between',
+  },
+  topControls: {
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+    paddingTop: spacing.xl,
+    paddingHorizontal: spacing.lg,
+  },
+  flipButton: {
+    backgroundColor: 'rgba(0,0,0,0.5)',
+    borderRadius: 25,
+    padding: spacing.sm,
+  },
+  bottomControls: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingBottom: spacing['3xl'],
+    paddingHorizontal: spacing.lg,
+  },
+  instructions: {
+    flex: 1,
+    alignItems: 'center',
+  },
+  instructionText: {
+    color: colors.white,
+    fontSize: typography.fontSize.base,
+    textAlign: 'center',
+    backgroundColor: 'rgba(0,0,0,0.5)',
+    paddingHorizontal: spacing.md,
+    paddingVertical: spacing.sm,
+    borderRadius: 20,
+  },
+  captureButton: {
+    backgroundColor: colors.primary,
+    borderRadius: 40,
+    padding: spacing.lg,
+    marginLeft: spacing.lg,
+  },
+  captureButtonDisabled: {
+    backgroundColor: colors.gray500,
+  },
+  message: {
+    fontSize: typography.fontSize.lg,
+    color: colors.textPrimary,
+    textAlign: 'center',
+    marginBottom: spacing.lg,
+  },
+  permissionButton: {
+    marginTop: spacing.md,
+  },
+});

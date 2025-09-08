@@ -1,41 +1,24 @@
-import { Tabs } from "expo-router";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
-import colors from "@/theme/color";
+import { Stack } from 'expo-router';
+import { useFonts } from 'expo-font';
+import { Poppins_400Regular, Poppins_500Medium, Poppins_600SemiBold, Poppins_700Bold } from '@expo-google-fonts/poppins';
+import { Loading } from '../components';
 
-export default function Layout() {
-  return <Tabs screenOptions={{
-    headerStyle: {
-      backgroundColor: colors.primary,
-    },
-    headerTintColor: colors.textPrimary,
-    tabBarShowLabel: false,
-    headerShown: false,
-  }}>
-    <Tabs.Screen name="index" options={{
-      title: "Home",
-      tabBarIcon: ({ color, size }) => (
-        <MaterialCommunityIcons name="home" color={color} size={size} />
-      ),
-    }} />
-    <Tabs.Screen name="snapRecipe" options={{
-      title: "SnapFood",
-      tabBarIcon: ({ color, size }) => (
-        <MaterialCommunityIcons name="plus" color={color} size={size} />
-      ),
-    }} />
-    <Tabs.Screen name="recipes" options={{
-      title: "Recipes",
-      tabBarIcon: ({ color, size }) => (
-        <MaterialCommunityIcons name="book-open" color={color} size={size} />
-      ),
-    }} />
-    <Tabs.Screen name="recipe/[id]" options={{
-      title: "Recipe",
-      href: null,
-      headerShown: false,
-      tabBarStyle: {
-        display: "none",
-      },
-    }} />
-  </Tabs>;
+export default function RootLayout() {
+  const [fontsLoaded] = useFonts({
+    'Poppins-Regular': Poppins_400Regular,
+    'Poppins-Medium': Poppins_500Medium,
+    'Poppins-SemiBold': Poppins_600SemiBold,
+    'Poppins-Bold': Poppins_700Bold,
+  });
+
+  if (!fontsLoaded) {
+    return <Loading text="Loading fonts..." />;
+  }
+
+  return (
+    <Stack screenOptions={{ headerShown: false }}>
+      <Stack.Screen name="auth" options={{ headerShown: false }} />
+      <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+    </Stack>
+  );
 }

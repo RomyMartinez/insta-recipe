@@ -1,105 +1,155 @@
 # 🍳 Insta-Recipe
 
-> Transforme fotos de comida em receitas deliciosas com inteligência artificial!
+> Transform food photos into delicious recipes with artificial intelligence!
 
-## 📱 Sobre o Projeto
+## 📱 About the Project
 
-Insta-Recipe é um aplicativo móvel inovador que utiliza inteligência artificial para analisar fotos de pratos e gerar receitas completas automaticamente. Ideal para quem quer descobrir como preparar aquela comida que viu em um restaurante ou foto na internet.
+Insta-Recipe is an innovative mobile app that uses artificial intelligence to analyze food photos and automatically generate complete recipes. Perfect for anyone who wants to discover how to prepare that dish they saw at a restaurant or in a photo online.
 
-## ✨ Funcionalidades
+## ✨ Features
 
-- 📸 **Captura de Fotos**: Tire fotos diretamente no app ou selecione da galeria
-- 🤖 **Análise por IA**: Reconhecimento automático de ingredientes e pratos
-- 📝 **Geração de Receitas**: Receitas completas com ingredientes e instruções
-- 💾 **Histórico**: Salve suas receitas favoritas para consulta posterior
-- 📱 **Interface Intuitiva**: Design moderno e fácil de usar
+- 📸 **Photo Capture**: Take photos directly in the app or select from gallery
+- 🤖 **AI Analysis**: Automatic recognition of ingredients and dishes
+- 📝 **Recipe Generation**: Complete recipes with ingredients and instructions
+- 💾 **Recipe Management**: Save your favorite recipes for later reference
+- 📱 **Intuitive Interface**: Modern and easy-to-use design
+- 🔐 **User Authentication**: Secure login and signup system
+- 📚 **Recipe Collection**: Organize your saved and created recipes
+- 👤 **User Profile**: Manage your account and preferences
 
-## 🚀 Tecnologias Utilizadas
+## 🚀 Technologies Used
 
 - **Frontend**: React Native + Expo
-- **Roteamento**: Expo Router
-- **Linguagem**: TypeScript
-- **Plataformas**: Android e iOS
-- **IA**: Integração com APIs de reconhecimento de imagem
+- **Navigation**: Expo Router (Stack + Tabs)
+- **Language**: TypeScript
+- **Platforms**: Android and iOS
+- **AI**: OpenAI GPT-4 Vision API integration
+- **Camera**: Expo Camera and Image Picker
+- **Fonts**: Google Fonts (Poppins)
+- **UI Components**: Custom component library
+- **State Management**: React Hooks
+- **Storage**: AsyncStorage for local data
 
-## 📋 Pré-requisitos
+## 📋 Prerequisites
 
-- Node.js (versão 18 ou superior)
-- npm ou yarn
+- Node.js (version 18 or higher)
+- npm or yarn
 - Expo CLI
-- Android Studio (para desenvolvimento Android)
-- Xcode (para desenvolvimento iOS - apenas macOS)
+- Android Studio (for Android development)
+- Xcode (for iOS development - macOS only)
+- OpenAI API Key (for recipe generation)
 
-## 🛠️ Instalação
+## 🛠️ Installation
 
-1. **Clone o repositório**
+1. **Clone the repository**
+
    ```bash
-   git clone https://github.com/seu-usuario/insta-recipe.git
+   git clone https://github.com/your-username/insta-recipe.git
    cd insta-recipe
    ```
 
-2. **Instale as dependências**
+2. **Install dependencies**
+
    ```bash
    npm install
-   # ou
+   # or
    yarn install
    ```
 
-3. **Inicie o projeto**
+3. **Configure OpenAI API**
+
+   - Get your API key from [OpenAI](https://platform.openai.com/api-keys)
+   - Update `src/services/api.ts` with your API key
+   - Replace `'your-openai-api-key-here'` with your actual key
+
+4. **Start the project**
    ```bash
    npm start
-   # ou
+   # or
    yarn start
    ```
 
-## 📱 Como Usar
+## 📱 How to Use
 
-1. Abra o aplicativo
-2. Toque no botão de câmera para tirar uma foto
-3. Ou selecione uma foto da sua galeria
-4. Aguarde a análise da IA
-5. Visualize a receita gerada
-6. Salve a receita se desejar
+1. **Open the app** and sign up or log in
+2. **Take a photo** using the camera tab to capture food
+3. **Or select** a photo from your gallery
+4. **Wait for AI analysis** to generate the recipe
+5. **Review and edit** the generated recipe if needed
+6. **Save the recipe** to your collection
+7. **Browse recipes** in the menu tab
+8. **Manage your collection** in the collection tab
+9. **Update your profile** in the profile tab
 
-## 🏗️ Estrutura do Projeto
+## 🏗️ Project Structure
 
 ```
 insta-recipe/
 ├── src/
-│   └── app/
-│       ├── _layout.tsx          # Layout principal da aplicação
-│       ├── index.tsx            # Tela inicial
-│       └── recipes/
-│           ├── index.tsx        # Lista de receitas
-│           └── [id].tsx         # Receita individual
-├── android/                     # Configurações Android
-├── ios/                        # Configurações iOS
-└── package.json                # Dependências do projeto
+│   ├── app/                     # App screens and navigation
+│   │   ├── _layout.tsx         # Root layout with Stack navigation
+│   │   ├── index.tsx           # Initial screen (redirects to auth)
+│   │   ├── auth/               # Authentication screens
+│   │   │   ├── _layout.tsx    # Auth layout
+│   │   │   ├── login.tsx       # Login screen
+│   │   │   └── signup.tsx      # Signup screen
+│   │   └── (tabs)/             # Tab navigation screens
+│   │       ├── _layout.tsx     # Tabs layout
+│   │       ├── menu/           # Menu tab (all recipes)
+│   │       ├── collection/     # Collection tab (saved recipes)
+│   │       ├── camera/         # Camera tab (photo capture)
+│   │       └── profile/        # Profile tab (user settings)
+│   ├── components/             # Reusable components
+│   │   ├── Button/            # Button component
+│   │   ├── Card/              # Card component
+│   │   ├── Input/             # Input component
+│   │   └── Loading/           # Loading component
+│   ├── services/              # API services
+│   │   └── api.ts            # OpenAI API integration
+│   ├── theme/                 # Theme system
+│   │   ├── colors.ts         # Color palette
+│   │   ├── typography.ts     # Font system
+│   │   ├── spacing.ts        # Spacing and shadows
+│   │   └── index.ts          # Theme exports
+│   └── utils/                 # Utility functions
+│       └── imageUtils.ts     # Image handling utilities
+├── android/                   # Android configuration
+├── ios/                      # iOS configuration
+└── package.json              # Project dependencies
 ```
 
-## 🔧 Configuração de Desenvolvimento
+## 🔧 Development Setup
 
 ### Android
+
 ```bash
 npm run android
 ```
 
 ### iOS
+
 ```bash
 npm run ios
 ```
 
 ### Web
+
 ```bash
 npm run web
 ```
 
-## 📦 Dependências Principais
+## 📦 Main Dependencies
 
-- `expo`: Framework principal
-- `expo-router`: Sistema de roteamento
-- `react-native`: Framework nativo
-- `typescript`: Linguagem de programação
+- `expo`: Main framework
+- `expo-router`: Navigation system
+- `expo-camera`: Camera functionality
+- `expo-image-picker`: Image selection
+- `expo-font`: Font management
+- `@expo-google-fonts/poppins`: Poppins font family
+- `react-native`: Native framework
+- `typescript`: Programming language
+- `axios`: HTTP client for API calls
+- `react-native-paper`: UI components
 
 ## 🤝 Contribuindo
 
