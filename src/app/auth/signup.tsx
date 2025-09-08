@@ -1,24 +1,24 @@
-import React, { useState } from 'react';
-import { View, Text, StyleSheet, Alert, StatusBar } from 'react-native';
-import { router } from 'expo-router';
-import { Button, Input } from '../../components';
-import { colors, spacing, typography } from '../../theme';
+import React, { useState } from "react";
+import { View, Text, StyleSheet, Alert, StatusBar } from "react-native";
+import { router } from "expo-router";
+import { Button, Input } from "@/components";
+import { colors, spacing, typography } from "@/theme";
 
 export default function SignUpScreen() {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [loading, setLoading] = useState(false);
 
   const handleSignUp = async () => {
     if (!name || !email || !password || !confirmPassword) {
-      Alert.alert('Error', 'Please fill in all fields');
+      Alert.alert("Error", "Please fill in all fields");
       return;
     }
 
     if (password !== confirmPassword) {
-      Alert.alert('Error', 'Passwords do not match');
+      Alert.alert("Error", "Passwords do not match");
       return;
     }
 
@@ -26,12 +26,12 @@ export default function SignUpScreen() {
     // TODO: Implement actual signup logic
     setTimeout(() => {
       setLoading(false);
-      router.replace('/(tabs)/menu');
+      router.replace("/(tabs)/menu");
     }, 1000);
   };
 
   const handleLogin = () => {
-    router.push('/auth/login');
+    router.push("/auth/login");
   };
 
   return (
@@ -49,7 +49,7 @@ export default function SignUpScreen() {
           onChangeText={setName}
           placeholder="Enter your full name"
         />
-        
+
         <Input
           label="Email"
           value={email}
@@ -58,7 +58,7 @@ export default function SignUpScreen() {
           autoCapitalize="none"
           placeholder="Enter your email"
         />
-        
+
         <Input
           label="Password"
           value={password}
@@ -98,15 +98,15 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: colors.background,
     paddingHorizontal: spacing.lg,
-    justifyContent: 'center',
+    justifyContent: "center",
   },
   header: {
-    alignItems: 'center',
-    marginTop: spacing['3xl'],
-    marginBottom: spacing['4xl'],
+    alignItems: "center",
+    marginTop: spacing["3xl"],
+    marginBottom: spacing["4xl"],
   },
   title: {
-    fontSize: typography.fontSize['4xl'],
+    fontSize: typography.fontSize["4xl"],
     fontWeight: typography.fontWeight.bold,
     color: colors.textPrimary,
     marginBottom: spacing.sm,
@@ -116,7 +116,7 @@ const styles = StyleSheet.create({
     color: colors.textSecondary,
   },
   form: {
-    width: '100%',
+    width: "100%",
   },
   signUpButton: {
     marginTop: spacing.lg,

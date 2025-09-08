@@ -1,17 +1,17 @@
-import React, { useState } from 'react';
-import { View, Text, StyleSheet, Alert, StatusBar } from 'react-native';
-import { router } from 'expo-router';
-import { Button, Input } from '../../components';
-import { colors, spacing, typography } from '../../theme';
+import React, { useState } from "react";
+import { View, Text, StyleSheet, Alert, StatusBar } from "react-native";
+import { router } from "expo-router";
+import { Button, Input } from "@/components";
+import { colors, spacing, typography } from "@/theme";
 
 export default function LoginScreen() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
 
   const handleLogin = async () => {
     if (!email || !password) {
-      Alert.alert('Error', 'Please fill in all fields');
+      Alert.alert("Error", "Please fill in all fields");
       return;
     }
 
@@ -19,12 +19,12 @@ export default function LoginScreen() {
     // TODO: Implement actual login logic
     setTimeout(() => {
       setLoading(false);
-      router.replace('/(tabs)/menu');
+      router.replace("/(tabs)/menu");
     }, 1000);
   };
 
   const handleSignUp = () => {
-    router.push('/auth/signup');
+    router.push("/auth/signup");
   };
 
   return (
@@ -44,7 +44,7 @@ export default function LoginScreen() {
           autoCapitalize="none"
           placeholder="Enter your email"
         />
-        
+
         <Input
           label="Password"
           value={password}
@@ -76,15 +76,15 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: colors.background,
     paddingHorizontal: spacing.lg,
-    justifyContent: 'center',
+    justifyContent: "center",
   },
   header: {
-    alignItems: 'center',
-    marginTop: spacing['3xl'],
-    marginBottom: spacing['4xl'],
+    alignItems: "center",
+    marginTop: spacing["3xl"],
+    marginBottom: spacing["4xl"],
   },
   title: {
-    fontSize: typography.fontSize['4xl'],
+    fontSize: typography.fontSize["4xl"],
     fontWeight: typography.fontWeight.bold,
     color: colors.textPrimary,
     marginBottom: spacing.sm,
@@ -94,7 +94,7 @@ const styles = StyleSheet.create({
     color: colors.textSecondary,
   },
   form: {
-    width: '100%',
+    width: "100%",
   },
   loginButton: {
     marginTop: spacing.lg,
