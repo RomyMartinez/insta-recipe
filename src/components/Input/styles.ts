@@ -1,5 +1,5 @@
-import { StyleSheet } from 'react-native';
-import { colors, spacing, borderRadius } from '../../theme';
+import { StyleSheet } from "react-native";
+import { colors, spacing, borderRadius } from "@/theme";
 
 export const styles = StyleSheet.create({
   container: {
@@ -7,10 +7,10 @@ export const styles = StyleSheet.create({
   },
   label: {
     fontSize: 14,
-    fontWeight: '500',
+    fontWeight: "500",
     color: colors.textPrimary,
     marginBottom: spacing.xs,
-    fontFamily: 'Poppins-Medium',
+    fontFamily: "Poppins-Medium",
   },
   inputContainer: {
     borderWidth: 1,
@@ -31,7 +31,7 @@ export const styles = StyleSheet.create({
     fontSize: 16,
     color: colors.textPrimary,
     padding: 0,
-    fontFamily: 'Poppins-Regular',
+    fontFamily: "Poppins-Regular",
   },
   errorText: {
     fontSize: 12,

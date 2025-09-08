@@ -1,14 +1,14 @@
-import { StyleSheet } from 'react-native';
-import { colors, spacing, borderRadius, shadows } from '../../theme';
+import { StyleSheet } from "react-native";
+import { colors, spacing, borderRadius, shadows } from "@/theme";
 
 export const styles = StyleSheet.create({
   container: {
     borderRadius: borderRadius.lg,
     paddingVertical: spacing.md,
     paddingHorizontal: spacing.lg,
-    alignItems: 'center',
-    justifyContent: 'center',
-    flexDirection: 'row',
+    alignItems: "center",
+    justifyContent: "center",
+    flexDirection: "row",
     ...shadows.sm,
   },
   primary: {
@@ -18,12 +18,12 @@ export const styles = StyleSheet.create({
     backgroundColor: colors.secondary,
   },
   outline: {
-    backgroundColor: 'transparent',
+    backgroundColor: "transparent",
     borderWidth: 2,
     borderColor: colors.primary,
   },
   ghost: {
-    backgroundColor: 'transparent',
+    backgroundColor: "transparent",
   },
   disabled: {
     backgroundColor: colors.gray300,
@@ -31,9 +31,9 @@ export const styles = StyleSheet.create({
   },
   text: {
     fontSize: 16,
-    fontWeight: '600',
+    fontWeight: "600",
     color: colors.white,
-    fontFamily: 'Poppins-SemiBold',
+    fontFamily: "Poppins-SemiBold",
   },
   textOutline: {
     color: colors.primary,
