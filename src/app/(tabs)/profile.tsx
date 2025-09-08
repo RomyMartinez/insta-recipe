@@ -8,8 +8,8 @@ import {
   StatusBar,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
-import { Button, Input } from "../../components";
-import { colors, spacing, typography } from "../../theme";
+import { Button, Input } from "@/components";
+import { colors, spacing, typography } from "@/theme";
 
 export default function ProfileScreen() {
   const [user, setUser] = useState({

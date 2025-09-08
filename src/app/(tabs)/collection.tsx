@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import { View, Text, StyleSheet, FlatList, StatusBar } from 'react-native';
-import { Card } from '../../components';
-import { colors, spacing, typography } from '../../theme';
+import React, { useState } from "react";
+import { View, Text, StyleSheet, FlatList, StatusBar } from "react-native";
+import { Card } from "@/components";
+import { colors, spacing, typography } from "@/theme";
 
 interface SavedRecipe {
   id: string;
@@ -16,20 +16,22 @@ interface SavedRecipe {
 export default function CollectionScreen() {
   const [savedRecipes, setSavedRecipes] = useState<SavedRecipe[]>([
     {
-      id: '1',
-      title: 'My Custom Pasta',
-      description: 'A delicious pasta recipe I created',
-      image: 'https://images.unsplash.com/photo-1621996346565-e3dbc353d2e5?w=400',
-      time: '25 min',
+      id: "1",
+      title: "My Custom Pasta",
+      description: "A delicious pasta recipe I created",
+      image:
+        "https://images.unsplash.com/photo-1621996346565-e3dbc353d2e5?w=400",
+      time: "25 min",
       rating: 4.9,
       isFavorite: true,
     },
     {
-      id: '2',
-      title: 'Favorite Pizza',
-      description: 'The best homemade pizza recipe',
-      image: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=400',
-      time: '40 min',
+      id: "2",
+      title: "Favorite Pizza",
+      description: "The best homemade pizza recipe",
+      image:
+        "https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=400",
+      time: "40 min",
       rating: 4.8,
       isFavorite: true,
     },
@@ -37,7 +39,7 @@ export default function CollectionScreen() {
 
   const handleRecipePress = (recipe: SavedRecipe) => {
     // TODO: Navigate to recipe detail
-    console.log('Saved recipe pressed:', recipe.title);
+    console.log("Saved recipe pressed:", recipe.title);
   };
 
   const renderRecipe = ({ item }: { item: SavedRecipe }) => (
@@ -86,14 +88,14 @@ const styles = StyleSheet.create({
   },
   header: {
     paddingHorizontal: spacing.lg,
-    paddingTop: spacing['5xl'],
+    paddingTop: spacing["5xl"],
     paddingBottom: spacing.md,
     backgroundColor: colors.white,
     borderBottomWidth: 1,
     borderBottomColor: colors.border,
   },
   title: {
-    fontSize: typography.fontSize['3xl'],
+    fontSize: typography.fontSize["3xl"],
     fontWeight: typography.fontWeight.bold,
     color: colors.textPrimary,
     marginBottom: spacing.xs,
@@ -105,14 +107,14 @@ const styles = StyleSheet.create({
   list: {
     paddingHorizontal: spacing.lg,
     paddingTop: spacing.md,
-    paddingBottom: spacing['3xl'],
+    paddingBottom: spacing["3xl"],
   },
   emptyState: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
     paddingHorizontal: spacing.lg,
-    paddingTop: spacing['5xl'],
+    paddingTop: spacing["5xl"],
   },
   emptyTitle: {
     fontSize: typography.fontSize.xl,
@@ -123,6 +125,6 @@ const styles = StyleSheet.create({
   emptySubtitle: {
     fontSize: typography.fontSize.base,
     color: colors.textSecondary,
-    textAlign: 'center',
+    textAlign: "center",
   },
 });

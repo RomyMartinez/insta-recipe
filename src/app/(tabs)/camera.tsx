@@ -9,8 +9,8 @@ import {
 } from "react-native";
 import { CameraView, useCameraPermissions } from "expo-camera";
 import { Ionicons } from "@expo/vector-icons";
-import { Button } from "../../components";
-import { colors, spacing, typography } from "../../theme";
+import { Button } from "@/components";
+import { colors, spacing, typography } from "@/theme";
 
 export default function CameraScreen() {
   const [permission, requestPermission] = useCameraPermissions();
