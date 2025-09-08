@@ -1,6 +1,6 @@
-import { Tabs } from 'expo-router';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
-import { colors, spacing } from '../../theme';
+import { Tabs } from "expo-router";
+import { Ionicons } from "@expo/vector-icons";
+import { colors, spacing } from "../../theme";
 
 export default function TabsLayout() {
   return (
@@ -23,36 +23,36 @@ export default function TabsLayout() {
       <Tabs.Screen
         name="menu"
         options={{
-          title: 'Menu',
+          title: "Menu",
           tabBarIcon: ({ color, size }) => (
-            <MaterialCommunityIcons name="food" color={color} size={28} />
+            <Ionicons name="restaurant" color={color} size={24} />
           ),
         }}
       />
       <Tabs.Screen
         name="collection"
         options={{
-          title: 'Collection',
+          title: "Collection",
           tabBarIcon: ({ color, size }) => (
-            <MaterialCommunityIcons name="bookmark" color={color} size={28} />
+            <Ionicons name="bookmark" color={color} size={24} />
           ),
         }}
       />
       <Tabs.Screen
         name="camera"
         options={{
-          title: 'Camera',
+          title: "Camera",
           tabBarIcon: ({ color, size }) => (
-            <MaterialCommunityIcons name="camera" color={color} size={28} />
+            <Ionicons name="camera" color={color} size={24} />
           ),
         }}
       />
       <Tabs.Screen
         name="profile"
         options={{
-          title: 'Profile',
+          title: "Profile",
           tabBarIcon: ({ color, size }) => (
-            <MaterialCommunityIcons name="account" color={color} size={28} />
+            <Ionicons name="person" color={color} size={24} />
           ),
         }}
       />

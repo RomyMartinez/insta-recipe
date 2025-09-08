@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, Alert, ScrollView, StatusBar } from 'react-native';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { Ionicons } from '@expo/vector-icons';
 import { Button, Input } from '../../../components';
 import { colors, spacing, typography } from '../../../theme';
 
@@ -52,7 +52,7 @@ export default function ProfileScreen() {
       <StatusBar barStyle="dark-content" backgroundColor={colors.background} />
       <View style={styles.header}>
         <View style={styles.avatar}>
-          <MaterialCommunityIcons name="account" size={40} color={colors.white} />
+          <Ionicons name="person" size={40} color={colors.white} />
         </View>
         <Text style={styles.name}>{user.name}</Text>
         <Text style={styles.email}>{user.email}</Text>

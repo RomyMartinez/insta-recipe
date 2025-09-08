@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { View, Text, StyleSheet, Alert, TouchableOpacity, StatusBar } from 'react-native';
 import { Camera, CameraType } from 'expo-camera';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { Ionicons } from '@expo/vector-icons';
 import { Button } from '../../../components';
 import { colors, spacing, typography } from '../../../theme';
 
@@ -82,7 +82,7 @@ export default function CameraScreen() {
         <View style={styles.overlay}>
           <View style={styles.topControls}>
             <TouchableOpacity style={styles.flipButton} onPress={toggleCameraType}>
-              <MaterialCommunityIcons name="camera-flip" size={24} color={colors.white} />
+              <Ionicons name="camera-reverse" size={24} color={colors.white} />
             </TouchableOpacity>
           </View>
 
@@ -98,7 +98,7 @@ export default function CameraScreen() {
               onPress={handleCapture}
               disabled={isCapturing}
             >
-              <MaterialCommunityIcons
+              <Ionicons
                 name="camera"
                 size={32}
                 color={colors.white}
