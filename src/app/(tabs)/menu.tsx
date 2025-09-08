@@ -104,7 +104,7 @@ const styles = StyleSheet.create({
   },
   header: {
     paddingHorizontal: spacing.lg,
-    paddingTop: spacing["3xl"],
+    paddingTop: spacing["5xl"],
     paddingBottom: spacing.md,
     backgroundColor: colors.white,
     borderBottomWidth: 1,

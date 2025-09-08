@@ -146,7 +146,7 @@ const styles = StyleSheet.create({
   },
   header: {
     alignItems: "center",
-    paddingTop: spacing["4xl"],
+    paddingTop: spacing["5xl"],
     paddingBottom: spacing.xl,
     paddingHorizontal: spacing.lg,
     backgroundColor: colors.white,

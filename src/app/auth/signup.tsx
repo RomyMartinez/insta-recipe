@@ -102,6 +102,7 @@ const styles = StyleSheet.create({
   },
   header: {
     alignItems: 'center',
+    marginTop: spacing['3xl'],
     marginBottom: spacing['4xl'],
   },
   title: {

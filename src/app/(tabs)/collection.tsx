@@ -86,7 +86,7 @@ const styles = StyleSheet.create({
   },
   header: {
     paddingHorizontal: spacing.lg,
-    paddingTop: spacing['3xl'],
+    paddingTop: spacing['5xl'],
     paddingBottom: spacing.md,
     backgroundColor: colors.white,
     borderBottomWidth: 1,
@@ -112,7 +112,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     paddingHorizontal: spacing.lg,
-    paddingTop: spacing['3xl'],
+    paddingTop: spacing['5xl'],
   },
   emptyTitle: {
     fontSize: typography.fontSize.xl,
