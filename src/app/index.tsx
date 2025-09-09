@@ -6,7 +6,7 @@ export default function Index() {
   useEffect(() => {
     // TODO: Check if user is authenticated
     // For now, redirect to login
-    router.replace("/auth/login");
+    router.replace("/(tabs)/search");
   }, []);
 
   return <Loading text="Initializing app..." />;

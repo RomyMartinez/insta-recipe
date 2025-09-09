@@ -1,97 +1,31 @@
-import React, { useState } from "react";
-import {
-  View,
-  Text,
-  StyleSheet,
-  FlatList,
-  RefreshControl,
-  StatusBar,
-} from "react-native";
-import { Card } from "@/components";
+import { useState } from "react";
+import { View, Text, StyleSheet, StatusBar } from "react-native";
+import List from "@/components/List";
 import { colors, spacing, typography } from "@/theme";
-
-interface Recipe {
-  id: string;
-  title: string;
-  description: string;
-  image: string;
-  time: string;
-  rating: number;
-}
+import MenuHeader from "@/components/MenuHeader";
+import RecipeCard from "@/components/RecipeCard";
+import { Recipe } from "@/types/recipe";
+import { recipes as recipesData } from "@/utils/data";
+import { useFocusEffect } from "expo-router";
 
 export default function MenuScreen() {
-  const [recipes, setRecipes] = useState<Recipe[]>([
-    {
-      id: "1",
-      title: "Spaghetti Carbonara",
-      description: "Classic Italian pasta with eggs, cheese, and pancetta",
-      image:
-        "https://images.unsplash.com/photo-1621996346565-e3dbc353d2e5?w=400",
-      time: "20 min",
-      rating: 4.8,
-    },
-    {
-      id: "2",
-      title: "Chicken Tikka Masala",
-      description: "Creamy Indian curry with tender chicken pieces",
-      image:
-        "https://images.unsplash.com/photo-1563379091339-03246963d4d0?w=400",
-      time: "45 min",
-      rating: 4.6,
-    },
-    {
-      id: "3",
-      title: "Beef Tacos",
-      description: "Mexican street-style tacos with seasoned beef",
-      image:
-        "https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=400",
-      time: "30 min",
-      rating: 4.7,
-    },
-  ]);
-  const [refreshing, setRefreshing] = useState(false);
+  const [recipes, setRecipes] = useState<Recipe[]>([]);
 
-  const handleRefresh = () => {
-    setRefreshing(true);
-    // TODO: Fetch new recipes from API
-    setTimeout(() => {
-      setRefreshing(false);
-    }, 1000);
-  };
-
-  const handleRecipePress = (recipe: Recipe) => {
-    // TODO: Navigate to recipe detail
-    console.log("Recipe pressed:", recipe.title);
-  };
-
-  const renderRecipe = ({ item }: { item: Recipe }) => (
-    <Card
-      title={item.title}
-      description={item.description}
-      image={item.image}
-      time={item.time}
-      rating={item.rating}
-      onPress={() => handleRecipePress(item)}
-    />
-  );
+  useFocusEffect(() => {
+    setRecipes(recipesData);
+  });
 
   return (
     <View style={styles.container}>
       <StatusBar barStyle="dark-content" backgroundColor={colors.background} />
-      <View style={styles.header}>
-        <Text style={styles.title}>Discover Recipes</Text>
-        <Text style={styles.subtitle}>Find your next favorite dish</Text>
-      </View>
-
-      <FlatList
+      <MenuHeader />
+      <Text style={styles.title}>What's cooking today?</Text>
+      <List
         data={recipes}
-        renderItem={renderRecipe}
+        containerStyle={{ paddingHorizontal: spacing.lg }}
+        renderItem={({ item }) => <RecipeCard data={item} />}
         keyExtractor={(item) => item.id}
-        contentContainerStyle={styles.list}
-        refreshControl={
-          <RefreshControl refreshing={refreshing} onRefresh={handleRefresh} />
-        }
-        showsVerticalScrollIndicator={false}
+        emptyMessage="No recipes found"
       />
     </View>
   );
@@ -100,29 +34,16 @@ export default function MenuScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: colors.background,
+    backgroundColor: colors.gray100,
+    paddingVertical: spacing.md,
   },
-  header: {
-    paddingHorizontal: spacing.lg,
-    paddingTop: spacing["5xl"],
-    paddingBottom: spacing.md,
-    backgroundColor: colors.white,
-    borderBottomWidth: 1,
-    borderBottomColor: colors.border,
-  },
+
   title: {
     fontSize: typography.fontSize["3xl"],
-    fontWeight: typography.fontWeight.bold,
-    color: colors.textPrimary,
-    marginBottom: spacing.xs,
-  },
-  subtitle: {
-    fontSize: typography.fontSize.lg,
-    color: colors.textSecondary,
-  },
-  list: {
+    fontWeight: typography.fontWeight.medium,
     paddingHorizontal: spacing.lg,
-    paddingTop: spacing.md,
-    paddingBottom: spacing["3xl"],
+    paddingVertical: spacing.sm,
+    color: colors.textPrimary,
+    marginBottom: spacing.sm,
   },
 });

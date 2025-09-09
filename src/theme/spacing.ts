@@ -4,10 +4,10 @@ export const spacing = {
   md: 16,
   lg: 24,
   xl: 32,
-  '2xl': 40,
-  '3xl': 48,
-  '4xl': 64,
-  '5xl': 80,
+  "2xl": 40,
+  "3xl": 48,
+  "4xl": 64,
+  "5xl": 80,
 } as const;
 
 export const borderRadius = {
@@ -16,14 +16,14 @@ export const borderRadius = {
   md: 8,
   lg: 12,
   xl: 16,
-  '2xl': 20,
-  '3xl': 24,
+  "2xl": 20,
+  "3xl": 24,
   full: 9999,
 } as const;
 
 export const shadows = {
   sm: {
-    shadowColor: '#000',
+    shadowColor: "#000",
     shadowOffset: {
       width: 0,
       height: 1,
@@ -33,7 +33,7 @@ export const shadows = {
     elevation: 2,
   },
   md: {
-    shadowColor: '#000',
+    shadowColor: "#000",
     shadowOffset: {
       width: 0,
       height: 2,
@@ -43,7 +43,7 @@ export const shadows = {
     elevation: 4,
   },
   lg: {
-    shadowColor: '#000',
+    shadowColor: "#000",
     shadowOffset: {
       width: 0,
       height: 4,
