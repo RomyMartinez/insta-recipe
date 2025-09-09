@@ -11,14 +11,13 @@ import { CameraView, useCameraPermissions } from "expo-camera";
 import { Ionicons } from "@expo/vector-icons";
 import { Button } from "@/components";
 import { colors, spacing, typography } from "@/theme";
+import { router } from "expo-router";
 
 export default function CameraScreen() {
   const [permission, requestPermission] = useCameraPermissions();
   const [facing, setFacing] = useState<"front" | "back">("back");
   const [isCapturing, setIsCapturing] = useState(false);
   const cameraRef = useRef<CameraView>(null);
-
-  // Permission is handled by useCameraPermissions hook
 
   const handleCapture = async () => {
     if (cameraRef.current) {
@@ -29,17 +28,20 @@ export default function CameraScreen() {
           base64: true,
         });
 
-        // TODO: Send photo to OpenAI API for recipe generation
-        Alert.alert("Success", "Photo captured! Generating recipe...");
-
-        // Simulate API call
-        setTimeout(() => {
-          setIsCapturing(false);
-          // TODO: Navigate to recipe creation screen with generated recipe
-        }, 2000);
+        if (photo && photo.uri) {
+          // Navigate to createRecipe screen with the captured image
+          router.push({
+            pathname: "/createRecipe",
+            params: {
+              imageUri: photo.uri,
+            },
+          });
+        }
       } catch (error) {
-        setIsCapturing(false);
+        console.error("Camera capture error:", error);
         Alert.alert("Error", "Failed to capture photo");
+      } finally {
+        setIsCapturing(false);
       }
     }
   };
@@ -81,7 +83,7 @@ export default function CameraScreen() {
               style={styles.flipButton}
               onPress={toggleCameraType}
             >
-              <Ionicons name="camera-reverse" size={24} color={colors.white} />
+              <Ionicons name="camera-reverse" size={28} color={colors.white} />
             </TouchableOpacity>
           </View>
 
@@ -128,13 +130,13 @@ const styles = StyleSheet.create({
   topControls: {
     flexDirection: "row",
     justifyContent: "flex-end",
-    paddingTop: spacing.xl,
+    paddingTop: spacing["4xl"],
     paddingHorizontal: spacing.lg,
   },
   flipButton: {
     backgroundColor: "rgba(0,0,0,0.5)",
-    borderRadius: 25,
-    padding: spacing.sm,
+    borderRadius: 40,
+    padding: spacing.md,
   },
   bottomControls: {
     flexDirection: "row",
