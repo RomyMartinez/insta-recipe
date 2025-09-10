@@ -9,7 +9,7 @@ export const styles = StyleSheet.create({
   title: {
     alignSelf: "center",
     fontSize: typography.fontSize["3xl"],
-    fontWeight: typography.fontWeight.medium,
+    fontFamily: typography.fontFamily.medium,
     color: colors.textPrimary,
   },
   contentContainer: {
@@ -27,7 +27,7 @@ export const styles = StyleSheet.create({
   },
   categoryText: {
     fontSize: typography.fontSize.sm,
-    fontWeight: typography.fontWeight.medium,
+    fontFamily: typography.fontFamily.medium,
     color: colors.textPrimary,
   },
   searchContainer: {

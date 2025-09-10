@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native";
-import { colors, spacing, borderRadius, shadows } from "@/theme";
+import { colors, spacing, borderRadius, shadows, typography } from "@/theme";
 
 export const styles = StyleSheet.create({
   container: {
@@ -22,17 +22,16 @@ export const styles = StyleSheet.create({
     paddingTop: spacing.md,
   },
   title: {
-    fontSize: 18,
-    fontWeight: "600",
+    fontSize: typography.fontSize.lg,
     color: colors.textPrimary,
     marginBottom: spacing.xs,
-    fontFamily: "Poppins-SemiBold",
+    fontFamily: typography.fontFamily.semiBold,
   },
   description: {
-    fontSize: 14,
+    fontSize: typography.fontSize.sm,
     color: colors.textSecondary,
     lineHeight: 20,
-    fontFamily: "Poppins-Regular",
+    fontFamily: typography.fontFamily.regular,
   },
   footer: {
     flexDirection: "row",
@@ -41,9 +40,9 @@ export const styles = StyleSheet.create({
     marginTop: spacing.md,
   },
   time: {
-    fontSize: 12,
+    fontSize: typography.fontSize.sm,
     color: colors.textTertiary,
-    fontFamily: "Poppins-Regular",
+    fontFamily: typography.fontFamily.regular,
   },
   rating: {
     flexDirection: "row",

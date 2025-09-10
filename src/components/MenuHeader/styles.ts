@@ -25,7 +25,7 @@ export const styles = StyleSheet.create({
   },
   name: {
     fontSize: typography.fontSize.lg,
-    fontWeight: "bold",
+    fontFamily: typography.fontFamily.bold,
     color: colors.gray800,
   },
   notification: {

@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native";
-import { colors } from "@/theme";
+import { colors, spacing, typography } from "@/theme";
 
 export const styles = StyleSheet.create({
   container: {
@@ -7,11 +7,13 @@ export const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: colors.white,
+    paddingHorizontal: spacing.md,
   },
   text: {
     marginTop: 16,
-    fontSize: 16,
+    textAlign: "center",
+    fontSize: typography.fontSize.lg,
     color: colors.textSecondary,
-    fontFamily: "Poppins-Regular",
+    fontFamily: typography.fontFamily.medium,
   },
 });
