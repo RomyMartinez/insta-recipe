@@ -1,7 +1,7 @@
 import { View } from "react-native";
 import { StyleSheet } from "react-native";
 import Search from "@/components/Search";
-import { colors, typography, spacing } from "@/theme";
+import { colors, spacing } from "@/theme";
 import { useState, useEffect } from "react";
 import { categories, Category } from "@/types/category";
 import List from "@/components/List";

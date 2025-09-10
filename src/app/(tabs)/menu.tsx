@@ -39,8 +39,8 @@ const styles = StyleSheet.create({
   },
 
   title: {
-    fontSize: typography.fontSize["3xl"],
-    fontWeight: typography.fontWeight.medium,
+    fontSize: typography.fontSize["2xl"],
+    fontFamily: typography.fontFamily.medium,
     paddingHorizontal: spacing.lg,
     paddingVertical: spacing.sm,
     color: colors.textPrimary,
