@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { View, Text, ScrollView, Alert } from "react-native";
 import { useLocalSearchParams } from "expo-router";
 import BackStack from "@/components/BackStack";
@@ -16,6 +16,10 @@ import {
 
 export default function Recipe() {
   const { id } = useLocalSearchParams();
+  const [isFavorite, setIsFavorite] = useState(() => {
+    const recipe = recipes.find((recipe) => recipe.id === id);
+    return recipe?.isFavorite || false;
+  });
 
   const recipe = recipes.find((recipe) => recipe.id === id);
 
@@ -32,7 +36,9 @@ export default function Recipe() {
   }
 
   const handleSave = () => {
-    Alert.alert("Success", "Recipe saved to your collection!");
+    const newFavoriteStatus = !isFavorite;
+    setIsFavorite(newFavoriteStatus);
+    recipe.isFavorite = newFavoriteStatus;
   };
 
   const handleShare = () => {
@@ -55,7 +61,11 @@ export default function Recipe() {
         <IngredientsList ingredients={recipe.ingredients} />
         <InstructionsList instructions={recipe.instructions} />
       </ScrollView>
-      <ActionButtons onSave={handleSave} onShare={handleShare} />
+      <ActionButtons
+        isFavorite={isFavorite}
+        onSave={handleSave}
+        onShare={handleShare}
+      />
     </View>
   );
 }

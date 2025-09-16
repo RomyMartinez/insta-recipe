@@ -5,15 +5,24 @@ import { colors, spacing, typography } from "@/theme";
 import { styles } from "./styles";
 
 interface ActionButtonsProps {
+  isFavorite: boolean;
   onSave?: () => void;
   onShare?: () => void;
 }
 
-export default function ActionButtons({ onSave, onShare }: ActionButtonsProps) {
+export default function ActionButtons({
+  isFavorite,
+  onSave,
+  onShare,
+}: ActionButtonsProps) {
   return (
     <View style={styles.actionButtons}>
       <TouchableOpacity style={styles.favoriteButton} onPress={onSave}>
-        <Ionicons name="heart-outline" size={20} color={colors.primary} />
+        <Ionicons
+          name={isFavorite ? "heart" : "heart-outline"}
+          size={20}
+          color={colors.primary}
+        />
         <Text style={styles.buttonText}>Save Recipe</Text>
       </TouchableOpacity>
 
