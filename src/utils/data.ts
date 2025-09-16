@@ -1,10 +1,14 @@
 import { Recipe } from "@/types/recipe";
+import { categories } from "@/types/category";
+
 export const recipes: Recipe[] = [
   {
     id: "1",
     title: "Spaghetti Carbonara",
     description: "Classic Italian pasta with eggs, cheese, and pancetta",
     image: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400",
+    category: categories[0],
+    isFavorite: true,
     time: "20 min",
     ingredients: [
       "2 cups all-purpose flour",
@@ -32,6 +36,8 @@ export const recipes: Recipe[] = [
     title: "Chicken Tikka Masala",
     description: "Creamy Indian curry with tender chicken pieces",
     image: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400",
+    category: categories[1],
+    isFavorite: false,
     time: "45 min",
     ingredients: [
       "1 kg chicken breast",
@@ -57,6 +63,8 @@ export const recipes: Recipe[] = [
     title: "Beef Tacos",
     description: "Mexican street-style tacos with seasoned beef",
     image: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400",
+    category: categories[2],
+    isFavorite: false,
     time: "30 min",
     ingredients: [
       "1 kg beef",
