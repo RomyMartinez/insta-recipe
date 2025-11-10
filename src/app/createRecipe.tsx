@@ -3,7 +3,7 @@ import { View, StyleSheet, Alert } from "react-native";
 import { router, useLocalSearchParams } from "expo-router";
 import { Loading } from "@/components/Loading";
 import { imageUtils } from "@/utils/imageUtils";
-import { OpenAIService, GeneratedRecipe } from "@/services/openai";
+import { } from "@/services/openai";
 import { colors, spacing } from "@/theme";
 import BackStack from "@/components/BackStack";
 import { ImagePicker } from "@/components/ImagePicker";
@@ -13,7 +13,7 @@ export default function CreateRecipe() {
   const [isLoading, setIsLoading] = useState(false);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [generatedRecipe, setGeneratedRecipe] =
-    useState<GeneratedRecipe | null>(null);
+    useState< | null>(null);
 
   useEffect(() => {
     if (imageUri) {
